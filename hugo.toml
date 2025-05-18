@@ -1,11 +1,12 @@
 baseURL = "/"
 languageCode = "en-us"
 theme = "poison"
-paginate = 10
 pluralizelisttitles = false   # removes the automatically appended "s" on sidebar entries
 
 # NOTE: If using Disqus as commenting engine, uncomment and configure this line
 # disqusShortname = "yourDisqusShortname"
+[pagination]
+  pagerSize = 10
 
 [params]
     brand = "Talandar"                      # name of your site - appears in the sidebar
@@ -108,5 +109,3 @@ pluralizelisttitles = false   # removes the automatically appended "s" on sideba
     series = 'series'
     tags = 'tags'
 
-[pagination]
-  pagerSize = 10
