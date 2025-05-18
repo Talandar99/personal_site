@@ -3,6 +3,10 @@ languageCode = "en-us"
 theme = "poison"
 pluralizelisttitles = false   # removes the automatically appended "s" on sidebar entries
 
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
 # NOTE: If using Disqus as commenting engine, uncomment and configure this line
 # disqusShortname = "yourDisqusShortname"
 [pagination]
