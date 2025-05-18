@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on </title>
+    <link>//localhost:1313/posts/</link>
+    <description>Recent content in Posts on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 18 May 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jupyter Notebook and Spark With Docker Compose</title>
+      <link>//localhost:1313/posts/how_to_setup_jupyter_notebook_with_docker_compose/</link>
+      <pubDate>Sun, 18 May 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/how_to_setup_jupyter_notebook_with_docker_compose/</guid>
+      <description>Prerequisite Make sure you have docker compose installed on your machine. I assume you have docker compose V2 but V1 should also do the job. We both know you are just as lazy bastard as I am. So i will start with most important stuff:&#xA;How to run 1. Create compose.yml file and add content above vim compose.yml compose.yml :&#xA;services: spark-scala-notebook: build: context: . dockerfile: Dockerfile args: NB_UID: 1000 NB_GID: 1000 image: spark-scala-notebook:latest ports: - &amp;#34;8888:8888&amp;#34; environment: - JUPYTER_TOKEN= volumes: - .</description>
+    </item>
+  </channel>
+</rss>
