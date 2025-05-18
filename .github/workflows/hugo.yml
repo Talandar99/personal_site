@@ -46,6 +46,10 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
+      - name: Copy fonts from theme to main static folder
+        run: |
+          mkdir -p static/fonts
+          cp -r themes/poison/static/fonts/* static/fonts/
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
@@ -63,12 +67,7 @@ jobs:
       - name: Configure Git
         run: git config core.quotepath false
       - name: Build with Hugo
-        run: |
-          hugo \
-            --gc \
-            --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/" \
-            --cacheDir "${{ runner.temp }}/hugo_cache"
+        run: hugo 
       - name: Cache Save
         id: cache-save
         uses: actions/cache/save@v4
