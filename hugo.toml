@@ -107,3 +107,6 @@ pluralizelisttitles = false   # removes the automatically appended "s" on sideba
 [taxonomies]
     series = 'series'
     tags = 'tags'
+
+[pagination]
+  pagerSize = 10
