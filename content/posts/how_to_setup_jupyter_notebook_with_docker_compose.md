@@ -6,7 +6,7 @@ draft = false
 ## Prerequisite
 Make sure you have docker compose installed on your machine. 
 I assume you have docker compose V2 but V1 should also do the job.
-We both know you are just as lazy bastard as I am. So i will start with most important stuff:
+We both know you are just as lazy as I am. So i will start with most important stuff:
 ## How to run 
 ### 1. Create compose.yml file and add content above
 ```bash
