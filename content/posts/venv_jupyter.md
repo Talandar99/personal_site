@@ -1,9 +1,8 @@
 +++
-title = 'Venv_jupyter'
+title = 'Using Jupyer notebook as python application'
 date = 2025-06-11
 draft = false
 +++
-# Using Jupyer notebook as python application
 Not too long ago i accidently discovered that Jupyer is just a python package that you can download and use.\
 Having good environment for interanctive programming in few commands on almost any device with python installed is really handy\
 It is simple to set up if you work in python on daily basis or used terminal a bit.
