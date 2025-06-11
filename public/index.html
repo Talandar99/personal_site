@@ -366,7 +366,7 @@ Prerequisite python3 pip3 How to create virtual python environment Installing pa
 </div>
 
         
-        Prerequisite Make sure you have docker compose installed on your machine. I assume you have docker compose V2 but V1 should also do the job. We both know you are just as lazy bastard as I am. So i will start with most important stuff:
+        Prerequisite Make sure you have docker compose installed on your machine. I assume you have docker compose V2 but V1 should also do the job. We both know you are just as lazy as I am. So i will start with most important stuff:
 How to run 1. Create compose.yml file and add content above vim compose.yml compose.yml :
 services: spark-scala-notebook: build: context: . dockerfile: Dockerfile args: NB_UID: 1000 NB_GID: 1000 image: spark-scala-notebook:latest ports: - &#34;8888:8888&#34; environment: - JUPYTER_TOKEN= volumes: - .
         
