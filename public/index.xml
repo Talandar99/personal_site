@@ -6,10 +6,17 @@
     <description>Recent content on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 May 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Jupyter Notebook and Spark With Docker Compose</title>
+      <title>Venv_jupyter</title>
+      <link>/posts/venv_jupyter/</link>
+      <pubDate>Wed, 11 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>/posts/venv_jupyter/</guid>
+      <description>Using Jupyer notebook as python application Not too long ago i accidently discovered that Jupyer is just a python package that you can download and use.&#xA;Having good environment for interanctive programming in few commands on almost any device with python installed is really handy&#xA;It is simple to set up if you work in python on daily basis or used terminal a bit.&#xA;Prerequisite python3 pip3 How to create virtual python environment Installing packages randomly on system is kinda dumb idea.</description>
+    </item>
+    <item>
+      <title>Jupyter &#43; Spark as Docker Compose</title>
       <link>/posts/how_to_setup_jupyter_notebook_with_docker_compose/</link>
       <pubDate>Sun, 18 May 2025 00:00:00 +0000</pubDate>
       <guid>/posts/how_to_setup_jupyter_notebook_with_docker_compose/</guid>

@@ -1,5 +1,5 @@
 +++
-title = 'Jupyter Notebook and Spark With Docker Compose'
+title = 'Jupyter + Spark as Docker Compose'
 date = 2025-05-18
 draft = false
 +++

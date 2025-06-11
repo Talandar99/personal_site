@@ -55,13 +55,16 @@
 
 
 
+
+
+
 <!-- Open Graph image and Twitter Card metadata -->
 
-<title itemprop="name">Talandar</title>
-<meta property="og:title" content=Talandar />
-<meta name="twitter:title" content=Talandar />
-<meta itemprop="name" content=Talandar />
-<meta name="application-name" content=Talandar />
+<title itemprop="name">Talandar - Venv_jupyter</title>
+<meta property="og:title" content=Talandar&#32;-&#32;Venv_jupyter />
+<meta name="twitter:title" content=Talandar&#32;-&#32;Venv_jupyter />
+<meta itemprop="name" content=Talandar&#32;-&#32;Venv_jupyter />
+<meta name="application-name" content=Talandar&#32;-&#32;Venv_jupyter />
 <meta property="og:site_name" content="" />
 
 
@@ -71,19 +74,17 @@
 <meta name="twitter:description" content="" />
 
 
-<base href="/" />
-<link rel="canonical" href="/" itemprop="url" />
-<meta name="url" content="/" />
-<meta name="twitter:url" content="/" />
-<meta property="og:url" content="/" />
+<base href="/posts/venv_jupyter/" />
+<link rel="canonical" href="/posts/venv_jupyter/" itemprop="url" />
+<meta name="url" content="/posts/venv_jupyter/" />
+<meta name="twitter:url" content="/posts/venv_jupyter/" />
+<meta property="og:url" content="/posts/venv_jupyter/" />
 
 
 <meta property="og:updated_time" content=" 2025-06-11T00:00:00Z" />
 
 
 <link rel="sitemap" type="application/xml" title="Sitemap" href='/sitemap.xml' />
-
-<link href="/index.xml" rel="alternate" type="application/rss+xml" title="" />
 
 <meta name="robots" content="index,follow" />
 <meta name="googlebot" content="index,follow" />
@@ -284,11 +285,8 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </aside>
 
             <main class="content container">
-                <div class="posts">
-    
-    
-    <article class="post">
-        <div class="info">
+                <div class="post">
+  <div class="info">
   <h1 class="post-title">
     <a href="/posts/venv_jupyter/">Venv_jupyter</a>
   </h1>
@@ -320,68 +318,90 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
   
 </div>
 
-        
-        Using Jupyer notebook as python application Not too long ago i accidently discovered that Jupyer is just a python package that you can download and use.
-Having good environment for interanctive programming in few commands on almost any device with python installed is really handy
-It is simple to set up if you work in python on daily basis or used terminal a bit.
-Prerequisite python3 pip3 How to create virtual python environment Installing packages randomly on system is kinda dumb idea.
-        
-        <div class="read-more-link">
-            <a href="/posts/venv_jupyter/">Read More…</a>
-        </div>
-        
-        
-    </article>
-    <article class="post">
-        <div class="info">
-  <h1 class="post-title">
-    <a href="/posts/how_to_setup_jupyter_notebook_with_docker_compose/">Jupyter &#43; Spark as Docker Compose</a>
-  </h1>
-
-  <div class="headline">
-    <div>
-      
-      
-      <time datetime=" 2025-05-18T00:00:00Z" class="post-date">
-        May 18, 2025
-      </time>
-      
-      <span> - </span>
-      <span class="reading-time">
-        
-          
-        
-
-        <span>2 mins read</span>
-      </span>
-    </div>
-
+  <h1 id="using-jupyer-notebook-as-python-application">Using Jupyer notebook as python application</h1>
+<p>Not too long ago i accidently discovered that Jupyer is just a python package that you can download and use.<br>
+Having good environment for interanctive programming in few commands on almost any device with python installed is really handy<br>
+It is simple to set up if you work in python on daily basis or used terminal a bit.</p>
+<h2 id="prerequisite">Prerequisite</h2>
+<ul>
+<li>python3</li>
+<li>pip3</li>
+</ul>
+<h2 id="how-to-create-virtual-python-environment">How to create virtual python environment</h2>
+<p>Installing packages randomly on system is kinda dumb idea.<br>
+Let&rsquo;s create python venv (virtual environment)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -m venv my_venv
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># you can change name to something else</span>
+</span></span></code></pre></div><h2 id="how-to-activate-venv">How to activate venv</h2>
+<p>After python create venv you can activate it in current shell</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># on linux</span>
+</span></span><span style="display:flex;"><span>source my_venv/bin/activate
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># or </span>
+</span></span><span style="display:flex;"><span>. my_venv/bin/activate
+</span></span></code></pre></div><p>shell prompt should change<br>
+in my case:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># before:</span>
+</span></span><span style="display:flex;"><span>talandar@gentoo ~ $
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># after:</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>my_venv<span style="color:#f92672">)</span> talandar@gentoo ~ $
+</span></span></code></pre></div><h2 id="installing-jupyter">Installing jupyter</h2>
+<p>we can now use python package manager called pip to install jupyter</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install jupyter
+</span></span></code></pre></div><h2 id="running-jupyter-notebook">Running jupyter notebook</h2>
+<p>to run jupyer notebook just type this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>jupyter notebook 
+</span></span></code></pre></div><p>observe log for link to website<br>
+it will look like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Or copy and paste one of these URLs:
+</span></span><span style="display:flex;"><span>    http://localhost:8888/tree?token<span style="color:#f92672">=</span>sometoken....
+</span></span><span style="display:flex;"><span>    http://127.0.0.1:8888/tree?token<span style="color:#f92672">=</span>sometoken....
+</span></span></code></pre></div><p>paste in your browser and you are ready to go</p>
+<h2 id="tldr">TLDR</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># create and activate venv</span>
+</span></span><span style="display:flex;"><span>python -m venv my_venv
+</span></span><span style="display:flex;"><span>. my_venv/bin/activate
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># install jupyter</span>
+</span></span><span style="display:flex;"><span>pip install jupyter
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># run jupyter notebook</span>
+</span></span><span style="display:flex;"><span>jupyter notebook 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># observe logs for link to page</span>
+</span></span><span style="display:flex;"><span>Or copy and paste one of these URLs:
+</span></span><span style="display:flex;"><span>    http://localhost:8888/tree?token<span style="color:#f92672">=</span>sometoken....
+</span></span></code></pre></div>
+  
+  <hr>
+<div class="footer">
     
-  </div>
-
-  
-  
+	    
+            <a class="previous-post" href="/posts/how_to_setup_jupyter_notebook_with_docker_compose/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Jupyter + Spark as Docker Compose</a>
+        
+	    
+    
+</div>
 
   
 </div>
-
-        
-        Prerequisite Make sure you have docker compose installed on your machine. I assume you have docker compose V2 but V1 should also do the job. We both know you are just as lazy bastard as I am. So i will start with most important stuff:
-How to run 1. Create compose.yml file and add content above vim compose.yml compose.yml :
-services: spark-scala-notebook: build: context: . dockerfile: Dockerfile args: NB_UID: 1000 NB_GID: 1000 image: spark-scala-notebook:latest ports: - &#34;8888:8888&#34; environment: - JUPYTER_TOKEN= volumes: - .
-        
-        <div class="read-more-link">
-            <a href="/posts/how_to_setup_jupyter_notebook_with_docker_compose/">Read More…</a>
-        </div>
-        
-        
-    </article>
-</div>
-
-
-
             </main>
             
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisite">Prerequisite</a></li>
+    <li><a href="#how-to-create-virtual-python-environment">How to create virtual python environment</a></li>
+    <li><a href="#how-to-activate-venv">How to activate venv</a></li>
+    <li><a href="#installing-jupyter">Installing jupyter</a></li>
+    <li><a href="#running-jupyter-notebook">Running jupyter notebook</a></li>
+    <li><a href="#tldr">TLDR</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
         </div>
     </body>
 </html>
