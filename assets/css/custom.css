@@ -2,3 +2,13 @@
     padding: 1em 0em 0em 0em;
     text-decoration: none;
 }
+
+@font-face {
+  font-family: "FiraCodeNerdFontMono";
+  src: url("/fonts/FiraCodeNerdFontMono-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+code, pre {
+  font-family: "FiraCodeNerdFontMono", monospace;
+}

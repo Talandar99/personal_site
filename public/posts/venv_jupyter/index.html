@@ -109,7 +109,7 @@
     
     
 
-<link type="text/css" rel="stylesheet" href="/css/bundle.min.f901b1bc4dd8fb29a1508c35098d685faba49beded1038241010641f72f0a40d.css">
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.3d59017067c29b8917dec5084d5dc7308656542a5cf9ed953558382e08dbe37f.css">
 
 
     
@@ -132,7 +132,7 @@
         --code-color: #000;
         --code-background-color: #E5E5E5;
         --code-block-color: #FFF;
-        --code-block-background-color: #272822;
+        --code-block-background-color: #202020;
         --moon-sun-color: #FFF;
         --moon-sun-background-color: #515151;
     }
@@ -148,7 +148,7 @@
         --code-color: #FFF;
         --code-background-color: #515151;
         --code-block-color: #FFF;
-        --code-block-background-color: #272822;
+        --code-block-background-color: #202020;
     }
     body {
         background-color: var(--bkg-color);
@@ -329,43 +329,43 @@ It is simple to set up if you work in python on daily basis or used terminal a b
 <h2 id="how-to-create-virtual-python-environment">How to create virtual python environment</h2>
 <p>Installing packages randomly on system is kinda dumb idea.<br>
 Let&rsquo;s create python venv (virtual environment)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -m venv my_venv
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># you can change name to something else</span>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -m venv my_venv
+</span></span><span style="display:flex;"><span><span style="color:#6e6a86"># you can change name to something else</span>
 </span></span></code></pre></div><h2 id="how-to-activate-venv">How to activate venv</h2>
 <p>After python create venv you can activate it in current shell</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># on linux</span>
-</span></span><span style="display:flex;"><span>source my_venv/bin/activate
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># or </span>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6e6a86"># on linux</span>
+</span></span><span style="display:flex;"><span><span style="color:#ea9a97">source</span> my_venv/bin/activate
+</span></span><span style="display:flex;"><span><span style="color:#6e6a86"># or </span>
 </span></span><span style="display:flex;"><span>. my_venv/bin/activate
 </span></span></code></pre></div><p>shell prompt should change<br>
 in my case:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># before:</span>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6e6a86"># before:</span>
 </span></span><span style="display:flex;"><span>talandar@gentoo ~ $
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># after:</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>my_venv<span style="color:#f92672">)</span> talandar@gentoo ~ $
+</span></span><span style="display:flex;"><span><span style="color:#6e6a86"># after:</span>
+</span></span><span style="display:flex;"><span><span style="color:#908caa">(</span>my_venv<span style="color:#908caa">)</span> talandar@gentoo ~ $
 </span></span></code></pre></div><h2 id="installing-jupyter">Installing jupyter</h2>
 <p>we can now use python package manager called pip to install jupyter</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install jupyter
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install jupyter
 </span></span></code></pre></div><h2 id="running-jupyter-notebook">Running jupyter notebook</h2>
 <p>to run jupyer notebook just type this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>jupyter notebook 
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>jupyter notebook 
 </span></span></code></pre></div><p>observe log for link to website<br>
 it will look like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Or copy and paste one of these URLs:
-</span></span><span style="display:flex;"><span>    http://localhost:8888/tree?token<span style="color:#f92672">=</span>sometoken....
-</span></span><span style="display:flex;"><span>    http://127.0.0.1:8888/tree?token<span style="color:#f92672">=</span>sometoken....
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Or copy and paste one of these URLs:
+</span></span><span style="display:flex;"><span>    http://localhost:8888/tree?token<span style="color:#908caa">=</span>sometoken....
+</span></span><span style="display:flex;"><span>    http://127.0.0.1:8888/tree?token<span style="color:#908caa">=</span>sometoken....
 </span></span></code></pre></div><p>paste in your browser and you are ready to go</p>
 <h2 id="tldr">TLDR</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># create and activate venv</span>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6e6a86"># create and activate venv</span>
 </span></span><span style="display:flex;"><span>python -m venv my_venv
 </span></span><span style="display:flex;"><span>. my_venv/bin/activate
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># install jupyter</span>
+</span></span><span style="display:flex;"><span><span style="color:#6e6a86"># install jupyter</span>
 </span></span><span style="display:flex;"><span>pip install jupyter
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># run jupyter notebook</span>
+</span></span><span style="display:flex;"><span><span style="color:#6e6a86"># run jupyter notebook</span>
 </span></span><span style="display:flex;"><span>jupyter notebook 
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># observe logs for link to page</span>
+</span></span><span style="display:flex;"><span><span style="color:#6e6a86"># observe logs for link to page</span>
 </span></span><span style="display:flex;"><span>Or copy and paste one of these URLs:
-</span></span><span style="display:flex;"><span>    http://localhost:8888/tree?token<span style="color:#f92672">=</span>sometoken....
+</span></span><span style="display:flex;"><span>    http://localhost:8888/tree?token<span style="color:#908caa">=</span>sometoken....
 </span></span></code></pre></div>
   
   <hr>

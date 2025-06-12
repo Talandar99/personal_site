@@ -14,7 +14,7 @@ It is simple to set up if you work in python on daily basis or used terminal a b
 ## How to create virtual python environment
 Installing packages randomly on system is kinda dumb idea.\
 Let's create python venv (virtual environment)
-```bash
+```bash 
 python -m venv my_venv
 # you can change name to something else
 ```

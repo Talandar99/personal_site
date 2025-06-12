@@ -108,7 +108,7 @@
     
     
 
-<link type="text/css" rel="stylesheet" href="/css/bundle.min.f901b1bc4dd8fb29a1508c35098d685faba49beded1038241010641f72f0a40d.css">
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.3d59017067c29b8917dec5084d5dc7308656542a5cf9ed953558382e08dbe37f.css">
 
 
     
@@ -131,7 +131,7 @@
         --code-color: #000;
         --code-background-color: #E5E5E5;
         --code-block-color: #FFF;
-        --code-block-background-color: #272822;
+        --code-block-background-color: #202020;
         --moon-sun-color: #FFF;
         --moon-sun-background-color: #515151;
     }
@@ -147,7 +147,7 @@
         --code-color: #FFF;
         --code-background-color: #515151;
         --code-block-color: #FFF;
-        --code-block-background-color: #272822;
+        --code-block-background-color: #202020;
     }
     body {
         background-color: var(--bkg-color);
@@ -367,7 +367,7 @@ Prerequisite python3 pip3 How to create virtual python environment Installing pa
 
         
         Prerequisite Make sure you have docker compose installed on your machine. I assume you have docker compose V2 but V1 should also do the job. We both know you are just as lazy as I am. So i will start with most important stuff:
-How to run 1. Create compose.yml file and add content above vim compose.yml compose.yml :
+How to run 1. Create compose.yml file and add content bellow vim compose.yml compose.yml :
 services: spark-scala-notebook: build: context: . dockerfile: Dockerfile args: NB_UID: 1000 NB_GID: 1000 image: spark-scala-notebook:latest ports: - &#34;8888:8888&#34; environment: - JUPYTER_TOKEN= volumes: - .
         
         <div class="read-more-link">
