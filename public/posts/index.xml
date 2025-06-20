@@ -6,8 +6,15 @@
     <description>Recent content in Posts on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 11 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction to terraforming clouds</title>
+      <link>/posts/introduction_to_terraforming_clouds/</link>
+      <pubDate>Fri, 20 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>/posts/introduction_to_terraforming_clouds/</guid>
+      <description>Infrastructure as a code - Why Terraform tech is great Terraform lets you manage and automate your infrastructure by writing simple, human-readable code. Instead of manually setting up servers, networks, or cloud services, you declare what you want in a configuration file. Terraform takes care of creating, updating, or deleting those resources across different platforms, making infrastructure management consistent, repeatable, and easy to track. The only thing that I regret about it is that i did not learned it earlier</description>
+    </item>
     <item>
       <title>Using Jupyer notebook as python application</title>
       <link>/posts/venv_jupyter/</link>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="en-us" lang="en-us" >
+
+<head>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.5991d603939a6d188be342b278a4555db90f163903158c623d2c39fde3d82cb3.js"></script>
+
+
+
+
+
+  
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/favicon.png>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Talandar - Introduction to terraforming clouds</title>
+<meta property="og:title" content=Talandar&#32;-&#32;Introduction&#32;to&#32;terraforming&#32;clouds />
+<meta name="twitter:title" content=Talandar&#32;-&#32;Introduction&#32;to&#32;terraforming&#32;clouds />
+<meta itemprop="name" content=Talandar&#32;-&#32;Introduction&#32;to&#32;terraforming&#32;clouds />
+<meta name="application-name" content=Talandar&#32;-&#32;Introduction&#32;to&#32;terraforming&#32;clouds />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="" />
+<meta itemprop="description" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:description" content="" />
+
+
+<base href="/posts/introduction_to_terraforming_clouds/" />
+<link rel="canonical" href="/posts/introduction_to_terraforming_clouds/" itemprop="url" />
+<meta name="url" content="/posts/introduction_to_terraforming_clouds/" />
+<meta name="twitter:url" content="/posts/introduction_to_terraforming_clouds/" />
+<meta property="og:url" content="/posts/introduction_to_terraforming_clouds/" />
+
+
+<meta property="og:updated_time" content=" 2025-06-20T00:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.131.0">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.3d59017067c29b8917dec5084d5dc7308656542a5cf9ed953558382e08dbe37f.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #202020;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #202020;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+        
+            <a href="/">
+                <h1>Talandar</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    I will add description someday
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+            
+            
+                
+                
+            
+                
+                
+            
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                        <li class="sub-heading">
+                            Recent
+                        </li>
+                        
+                            <li class="bullet">
+                                <a href="/posts/introduction_to_terraforming_clouds/">Introduction to terraforming clouds</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="/posts/venv_jupyter/">Using Jupyer notebook as python application</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="/posts/how_to_setup_jupyter_notebook_with_docker_compose/">Jupyter &#43; Spark as Docker Compose</a>
+                            </li>
+                        
+                    
+                
+            
+            
+                
+                
+            
+                
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="RSS Feed" href="/posts/index.xml">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 1280.000000 1280.000000">
+            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="currentColor">
+                <path d="M2295 11929 c-284 -12 -642 -45 -707 -65 -17 -5 -18 -63 -18 -1039 0 -569 4 -1036 8 -1039 5 -3 74 6 153 19 510 86 1168 95 1789 25 1348 -153 2602 -677 3670 -1531 385 -308 820 -744 1126 -1129 842 -1060 1362 -2313 1514 -3650 70 -621 61 -1279 -25 -1789 -13 -79 -22 -148 -19 -153 3 -4 471 -8 1039 -8 l1035 0 5 23 c51 225 85 942 67 1419 -23 605 -77 1044 -198 1617 -294 1400 -927 2734 -1823 3846 -1043 1295 -2364 2259 -3909 2854 -1158 447 -2451 656 -3707 600z"/>
+                <path d="M2255 7845 c-269 -25 -620 -81 -667 -106 -17 -9 -18 -55 -18 -899 0 -706 3 -890 13 -890 6 0 66 18 132 41 130 44 288 79 467 105 154 21 577 30 749 15 1207 -107 2267 -823 2814 -1902 166 -327 268 -637 330 -1001 38 -227 48 -384 42 -662 -8 -348 -44 -590 -126 -831 -23 -66 -41 -126 -41 -132 0 -10 184 -13 890 -13 844 0 890 1 899 18 27 50 88 452 110 725 14 162 14 624 1 782 -59 703 -233 1323 -545 1945 -481 956 -1313 1788 -2270 2268 -620 310 -1239 483 -1940 542 -165 14 -669 10 -840 -5z"/>
+                <path d="M2519 3815 c-391 -66 -725 -336 -868 -703 -79 -201 -96 -462 -45 -677 83 -344 338 -641 666 -774 116 -47 205 -69 330 -80 412 -39 811 153 1040 500 193 292 240 648 128 981 -135 403 -492 699 -914 757 -100 14 -241 12 -337 -4z"/>
+            </g>
+        </svg>
+    </a>
+
+
+
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2025 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="/posts/introduction_to_terraforming_clouds/">Introduction to terraforming clouds</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <time datetime=" 2025-06-20T00:00:00Z" class="post-date">
+        June 20, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>4 mins read</span>
+      </span>
+    </div>
+
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h2 id="infrastructure-as-a-code---why-terraform-tech-is-great">Infrastructure as a code - Why Terraform tech is great</h2>
+<p>Terraform lets you manage and automate your infrastructure by writing simple, human-readable code. <br>
+Instead of manually setting up servers, networks, or cloud services, you declare what you want in a configuration file. <br>
+Terraform takes care of creating, updating, or deleting those resources across different platforms, making infrastructure
+management consistent, repeatable, and easy to track. The only thing that I regret about it is that i did not learned it earlier</p>
+<h3 id="terraform-or-opentofu">Terraform or OpenTofu</h3>
+<p>Terraform <em>WAS</em> open source ,but starting from version 1.6, they switched to a Business Source License (BSL),
+which restricts how the software can be used and modified, so it’s no longer fully open source.\</p>
+<p>OpenTofu is a fork of terraform created as a response to this license change.
+Tofu was created to keep the tool fully open source under a permissive license.
+It aims to maintain compatibility with Terraform configurations and providers
+while encouraging open collaboration and development without licensing restrictions.<br>
+So if you have a choice, use tofu instead of terraform</p>
+<hr>
+<h2 id="installation-and-configuration">Installation and configuration</h2>
+<p>In this example we will create cheapest possible linode nanode archlinux instance</p>
+<h3 id="installation">Installation</h3>
+<p>Use your favourite package manager to install terraform/opentofu</p>
+<h3 id="linode">Linode</h3>
+<ol>
+<li>Create linode account or use an existing one. Last time i checked they were giving 50$ for first month of usage to try their services</li>
+<li>Create new ssh key. Terraform will later associate key with your username
+<ul>
+<li>Go to linode website &gt; Upper right corner &gt; ssh keys &gt; (Add ssh key)</li>
+</ul>
+</li>
+<li>Create API key for using linode outside their site
+<ul>
+<li>Go to linode website &gt; Upper right corner &gt; API tokens &gt; Create a presonal Access Token</li>
+<li>Give &ldquo;No Access&rdquo; to everything except Events, Images and Linodes. Events, Images and Linodes should be read/write (Or at least that is what i&rsquo;ve selected)</li>
+</ul>
+</li>
+</ol>
+<h3 id="all-needed-files">All needed files</h3>
+<ol>
+<li>Create new directory for project</li>
+<li>Inside this directory create <code>secrets.auto.tfvars</code> file for your secrets</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terraform" data-lang="terraform"><span style="display:flex;"><span><span style="color:#ea9a97">linode_token</span>   = <span style="color:#f6c177">&#34;token_that_looks_like_random_numbers&#34;</span><span style="color:#6e6a86"> #&lt;------ API TOKEN form linode 
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#ea9a97">ssh_username</span>   = <span style="color:#f6c177">&#34;Example99&#34;</span><span style="color:#6e6a86">                            #&lt;------ here should be your linode username
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#ea9a97">root_password</span>  = <span style="color:#f6c177">&#34;perfectly_safe_password&#34;</span><span style="color:#6e6a86">              #&lt;------ password to cloud machine created using terraform
+</span></span></span></code></pre></div><ol start="3">
+<li>Create another file <code>main.tf</code> with our configuration. I will explain what does what in comments</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terraform" data-lang="terraform"><span style="display:flex;"><span><span style="color:#6e6a86"># we don&#39;t want to accidently share our secrets, that&#39;s why we hide them in separate directory
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"># and mark them as &#34;sensitive&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#3e8fb0">variable</span> <span style="color:#f6c177">&#34;linode_token&#34;</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">type</span>        = <span style="color:#ea9a97">string</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">sensitive</span>   = <span style="color:#3e8fb0">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#3e8fb0">
+</span></span></span><span style="display:flex;"><span><span style="color:#3e8fb0">variable</span> <span style="color:#f6c177">&#34;ssh_username&#34;</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">type</span>        = <span style="color:#ea9a97">string</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">sensitive</span>   = <span style="color:#3e8fb0">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#3e8fb0">
+</span></span></span><span style="display:flex;"><span><span style="color:#3e8fb0">variable</span> <span style="color:#f6c177">&#34;root_password&#34;</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">type</span>        = <span style="color:#ea9a97">string</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">sensitive</span>   = <span style="color:#3e8fb0">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#908caa">}</span><span style="color:#6e6a86">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"># in this example we are using linode so our provider is linode
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#ea9a97">terraform</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">required_providers</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">linode</span> = <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ea9a97">source</span> = <span style="color:#f6c177">&#34;linode/linode&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ea9a97">version</span> = <span style="color:#f6c177">&#34;2.5.2&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#908caa">}</span><span style="color:#6e6a86">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"># this is where terraform need linode api token, for creating linode instance
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#3e8fb0">provider</span> <span style="color:#f6c177">&#34;linode&#34;</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ea9a97">token</span> = <span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">linode_token</span>
+</span></span><span style="display:flex;"><span><span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#3e8fb0">resource</span> <span style="color:#f6c177">&#34;linode_instance&#34;</span> <span style="color:#f6c177">&#34;web&#34;</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">label</span>            = <span style="color:#f6c177">&#34;arch_eu-central_nanode-1cpu-1ram_tf&#34;</span><span style="color:#6e6a86">  #&lt;------ name that will display in linode dashboard
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">group</span>            = <span style="color:#f6c177">&#34;Terraform&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">image</span>            = <span style="color:#f6c177">&#34;linode/arch&#34;</span><span style="color:#6e6a86">                          #&lt;------ operating system. arch means ArchLinux
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">region</span>           = <span style="color:#f6c177">&#34;eu-central&#34;</span><span style="color:#6e6a86">                           #&lt;------ server location for nanode
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">type</span>             = <span style="color:#f6c177">&#34;g6-nanode-1&#34;</span><span style="color:#6e6a86">                          #&lt;------ codename for cheapest nanode on linode 
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">authorized_users</span> = <span style="color:#908caa">[</span><span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">ssh_username</span><span style="color:#908caa">]</span><span style="color:#6e6a86">                     #&lt;------ here are our linode username extracted from secrets
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">root_pass</span>        = <span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">root_password</span><span style="color:#6e6a86">                      #&lt;------ here is our password extracted from secret file
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">private_ip</span>       = <span style="color:#3e8fb0">false</span><span style="color:#6e6a86">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"># this is definition of connection that provisioner (down bellow) uses for executing commands
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">connection</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">type</span>        = <span style="color:#f6c177">&#34;ssh&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">user</span>        = <span style="color:#f6c177">&#34;root&#34;</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">password</span>    = <span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">root_password</span><span style="color:#6e6a86">                         #&lt;------ here is our password once again. In this case we use it to connect to resource
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>    <span style="color:#ea9a97">host</span>        = <span style="color:#ea9a97">self</span><span style="color:#908caa">.</span><span style="color:#ea9a97">ip_address</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#908caa">}</span><span style="color:#6e6a86">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"># afrer creating new machine we can send some extra commands 
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"># for example code bellow updates archlinux, install docker + docker compose and rebooting
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#3e8fb0">  provisioner</span> <span style="color:#f6c177">&#34;remote-exec&#34;</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">inline</span> = <span style="color:#908caa">[</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f6c177">&#34;sudo pacman -Sy archlinux-keyring --noconfirm&#34;</span><span style="color:#908caa">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f6c177">&#34;sudo pacman -Syu git docker docker-compose neovim zip wget tmux --noconfirm&#34;</span><span style="color:#908caa">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f6c177">&#34;sudo systemctl enable docker.service&#34;</span><span style="color:#908caa">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f6c177">&#34;sudo reboot&#34;</span><span style="color:#908caa">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#908caa">]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#908caa">}</span>
+</span></span></code></pre></div><h3 id="initializing-tf">Initializing tf</h3>
+<ol>
+<li>(optional but recomended) Create alias and add it to your <code>~/.bashrc</code> file.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ea9a97">alias</span> <span style="color:#ea9a97">tf</span><span style="color:#908caa">=</span>tofu
+</span></span><span style="display:flex;"><span><span style="color:#6e6a86">#or for terraform</span>
+</span></span><span style="display:flex;"><span><span style="color:#ea9a97">alias</span> <span style="color:#ea9a97">tf</span><span style="color:#908caa">=</span>terraform
+</span></span></code></pre></div><p>next commands assume you use <code>tf</code> alias</p>
+<ol start="2">
+<li>Initialize all resources needed for running terraform</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tf init   
+</span></span></code></pre></div><hr>
+<h2 id="usage">Usage</h2>
+<h3 id="apply-configuration-run-linode-instance">apply configuration (run linode instance)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tf apply
+</span></span></code></pre></div><h3 id="show-current-running-configuration">show current running configuration</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tf show
+</span></span></code></pre></div><h3 id="show-current-running-configuration-in-json-format">show current running configuration in json format</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tf show -json
+</span></span><span style="display:flex;"><span><span style="color:#6e6a86"># if you have jq tool installed you can utilize it to quickly check something, like ip addres</span>
+</span></span><span style="display:flex;"><span>tf show -json <span style="color:#908caa">|</span> jq <span style="color:#f6c177">&#34;.values.root_module.resources[].values.ipv4&#34;</span>
+</span></span></code></pre></div><h3 id="remove-everything-created-with-configuration-above">remove everything created with configuration above</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tf destroy
+</span></span></code></pre></div><hr>
+<h2 id="how-do-i-know-where-to-find-details-about-os-region-or-plan-linode">How do i know where to find details about os, region or plan (Linode)?</h2>
+<p>When setting up linode manually scroll down to the site, and you will see button called &ldquo;View Code Snippet&rdquo;.</p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="/posts/venv_jupyter/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Using Jupyer notebook as python application</a>
+        
+	    
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#infrastructure-as-a-code---why-terraform-tech-is-great">Infrastructure as a code - Why Terraform tech is great</a>
+      <ul>
+        <li><a href="#terraform-or-opentofu">Terraform or OpenTofu</a></li>
+      </ul>
+    </li>
+    <li><a href="#installation-and-configuration">Installation and configuration</a>
+      <ul>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#linode">Linode</a></li>
+        <li><a href="#all-needed-files">All needed files</a></li>
+        <li><a href="#initializing-tf">Initializing tf</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#apply-configuration-run-linode-instance">apply configuration (run linode instance)</a></li>
+        <li><a href="#show-current-running-configuration">show current running configuration</a></li>
+        <li><a href="#show-current-running-configuration-in-json-format">show current running configuration in json format</a></li>
+        <li><a href="#remove-everything-created-with-configuration-above">remove everything created with configuration above</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-do-i-know-where-to-find-details-about-os-region-or-plan-linode">How do i know where to find details about os, region or plan (Linode)?</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>
