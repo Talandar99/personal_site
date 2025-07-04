@@ -11,7 +11,7 @@ management consistent, repeatable, and easy to track. The only thing that I regr
 
 ### Terraform or OpenTofu
 Terraform *WAS* open source ,but starting from version 1.6, they switched to a Business Source License (BSL), 
-which restricts how the software can be used and modified, so it’s no longer fully open source.\
+which restricts how the software can be used and modified, so it’s no longer fully open source.
 
 OpenTofu is a fork of terraform created as a response to this license change. 
 Tofu was created to keep the tool fully open source under a permissive license. 

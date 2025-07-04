@@ -21,13 +21,10 @@
 
 
 
-<script defer language="javascript" type="text/javascript" src="/js/bundle.min.5991d603939a6d188be342b278a4555db90f163903158c623d2c39fde3d82cb3.js"></script>
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.7750550c0319f5de56d916b91e642bf72a5bd09ee50b201dc2ed9db69d6177a8.js"></script>
 
 
 
-
-
-  
 
 
 
@@ -102,13 +99,13 @@
 
 
 
-<meta name="generator" content="Hugo 0.131.0">
+<meta name="generator" content="Hugo 0.147.7">
 
 
     
     
 
-<link type="text/css" rel="stylesheet" href="/css/bundle.min.3d59017067c29b8917dec5084d5dc7308656542a5cf9ed953558382e08dbe37f.css">
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.e0316752119717c6838a85b9883e7e5f62c795178b0a97aa5e856dbd536d587e.css">
 
 
     
@@ -325,7 +322,11 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </div>
 
         
-        Infrastructure as a code - Why Terraform tech is great Terraform lets you manage and automate your infrastructure by writing simple, human-readable code. Instead of manually setting up servers, networks, or cloud services, you declare what you want in a configuration file. Terraform takes care of creating, updating, or deleting those resources across different platforms, making infrastructure management consistent, repeatable, and easy to track. The only thing that I regret about it is that i did not learned it earlier
+        <h2 id="infrastructure-as-a-code---why-terraform-tech-is-great">Infrastructure as a code - Why Terraform tech is great</h2>
+<p>Terraform lets you manage and automate your infrastructure by writing simple, human-readable code. <br>
+Instead of manually setting up servers, networks, or cloud services, you declare what you want in a configuration file. <br>
+Terraform takes care of creating, updating, or deleting those resources across different platforms, making infrastructure
+management consistent, repeatable, and easy to track. The only thing that I regret about it is that i did not learned it earlier</p>
         
         <div class="read-more-link">
             <a href="/posts/introduction_to_terraforming_clouds/">Read More…</a>
@@ -367,10 +368,17 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </div>
 
         
-        Not too long ago i accidently discovered that Jupyer is just a python package that you can download and use.
-Having good environment for interanctive programming in few commands on almost any device with python installed is really handy
-It is simple to set up if you work in python on daily basis or used terminal a bit.
-Prerequisite python3 pip3 How to create virtual python environment Installing packages randomly on system is kinda dumb idea.
+        <p>Not too long ago i accidently discovered that Jupyer is just a python package that you can download and use.<br>
+Having good environment for interanctive programming in few commands on almost any device with python installed is really handy<br>
+It is simple to set up if you work in python on daily basis or used terminal a bit.</p>
+<h2 id="prerequisite">Prerequisite</h2>
+<ul>
+<li>python3</li>
+<li>pip3</li>
+</ul>
+<h2 id="how-to-create-virtual-python-environment">How to create virtual python environment</h2>
+<p>Installing packages randomly on system is kinda dumb idea.<br>
+Let&rsquo;s create python venv (virtual environment)</p>
         
         <div class="read-more-link">
             <a href="/posts/venv_jupyter/">Read More…</a>
@@ -412,9 +420,43 @@ Prerequisite python3 pip3 How to create virtual python environment Installing pa
 </div>
 
         
-        Prerequisite Make sure you have docker compose installed on your machine. I assume you have docker compose V2 but V1 should also do the job. We both know you are just as lazy as I am. So i will start with most important stuff:
-How to run 1. Create compose.yml file and add content bellow vim compose.yml compose.yml :
-services: spark-scala-notebook: build: context: . dockerfile: Dockerfile args: NB_UID: 1000 NB_GID: 1000 image: spark-scala-notebook:latest ports: - &#34;8888:8888&#34; environment: - JUPYTER_TOKEN= volumes: - .
+        <h2 id="prerequisite">Prerequisite</h2>
+<p>Make sure you have docker compose installed on your machine.
+I assume you have docker compose V2 but V1 should also do the job.
+We both know you are just as lazy as I am. So i will start with most important stuff:</p>
+<h2 id="how-to-run">How to run</h2>
+<h3 id="1-create-composeyml-file-and-add-content-bellow">1. Create compose.yml file and add content bellow</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim compose.yml
+</span></span></code></pre></div><p>compose.yml :</p>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ea9a97">services</span><span style="color:#908caa">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">spark-scala-notebook</span><span style="color:#908caa">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">build</span><span style="color:#908caa">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ea9a97">context</span><span style="color:#908caa">:</span> <span style="color:#f6c177">.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ea9a97">dockerfile</span><span style="color:#908caa">:</span> <span style="color:#f6c177">Dockerfile</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ea9a97">args</span><span style="color:#908caa">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ea9a97">NB_UID</span><span style="color:#908caa">:</span> <span style="color:#f6c177">1000</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ea9a97">NB_GID</span><span style="color:#908caa">:</span> <span style="color:#f6c177">1000</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">image</span><span style="color:#908caa">:</span> <span style="color:#f6c177">spark-scala-notebook:latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">ports</span><span style="color:#908caa">:</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f6c177">&#34;8888:8888&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">environment</span><span style="color:#908caa">:</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f6c177">JUPYTER_TOKEN=</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">volumes</span><span style="color:#908caa">:</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f6c177">./work:/home/jovyan/work</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">user</span><span style="color:#908caa">:</span> <span style="color:#f6c177">root</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">command</span><span style="color:#908caa">:</span> <span style="color:#908caa">&gt;</span><span style="color:#f6c177">
+</span></span></span><span style="display:flex;"><span><span style="color:#f6c177">      bash -c &#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#f6c177">        chown -R jovyan:users /home/jovyan/work &amp;&amp;
+</span></span></span><span style="display:flex;"><span><span style="color:#f6c177">        start-notebook.sh --NotebookApp.token=&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#f6c177">      &#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">networks</span><span style="color:#908caa">:</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f6c177">spark_network</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ea9a97">networks</span><span style="color:#908caa">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">spark_network</span><span style="color:#908caa">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">driver</span><span style="color:#908caa">:</span> <span style="color:#f6c177">bridge</span>
+</span></span></code></pre></div><h3 id="2-compose-it">2. Compose it</h3>
+<p>execute the following command in the same file you created your compose.yml file</p>
         
         <div class="read-more-link">
             <a href="/posts/how_to_setup_jupyter_notebook_with_docker_compose/">Read More…</a>

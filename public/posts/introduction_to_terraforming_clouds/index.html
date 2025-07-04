@@ -21,13 +21,10 @@
 
 
 
-<script defer language="javascript" type="text/javascript" src="/js/bundle.min.5991d603939a6d188be342b278a4555db90f163903158c623d2c39fde3d82cb3.js"></script>
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.7750550c0319f5de56d916b91e642bf72a5bd09ee50b201dc2ed9db69d6177a8.js"></script>
 
 
 
-
-
-  
 
 
 
@@ -103,13 +100,13 @@
 
 
 
-<meta name="generator" content="Hugo 0.131.0">
+<meta name="generator" content="Hugo 0.147.7">
 
 
     
     
 
-<link type="text/css" rel="stylesheet" href="/css/bundle.min.3d59017067c29b8917dec5084d5dc7308656542a5cf9ed953558382e08dbe37f.css">
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.e0316752119717c6838a85b9883e7e5f62c795178b0a97aa5e856dbd536d587e.css">
 
 
     
@@ -329,7 +326,7 @@ Terraform takes care of creating, updating, or deleting those resources across d
 management consistent, repeatable, and easy to track. The only thing that I regret about it is that i did not learned it earlier</p>
 <h3 id="terraform-or-opentofu">Terraform or OpenTofu</h3>
 <p>Terraform <em>WAS</em> open source ,but starting from version 1.6, they switched to a Business Source License (BSL),
-which restricts how the software can be used and modified, so it’s no longer fully open source.\</p>
+which restricts how the software can be used and modified, so it’s no longer fully open source.</p>
 <p>OpenTofu is a fork of terraform created as a response to this license change.
 Tofu was created to keep the tool fully open source under a permissive license.
 It aims to maintain compatibility with Terraform configurations and providers
@@ -360,64 +357,64 @@ So if you have a choice, use tofu instead of terraform</p>
 <li>Create new directory for project</li>
 <li>Inside this directory create <code>secrets.auto.tfvars</code> file for your secrets</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terraform" data-lang="terraform"><span style="display:flex;"><span><span style="color:#ea9a97">linode_token</span>   = <span style="color:#f6c177">&#34;token_that_looks_like_random_numbers&#34;</span><span style="color:#6e6a86"> #&lt;------ API TOKEN form linode 
-</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#ea9a97">ssh_username</span>   = <span style="color:#f6c177">&#34;Example99&#34;</span><span style="color:#6e6a86">                            #&lt;------ here should be your linode username
-</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#ea9a97">root_password</span>  = <span style="color:#f6c177">&#34;perfectly_safe_password&#34;</span><span style="color:#6e6a86">              #&lt;------ password to cloud machine created using terraform
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terraform" data-lang="terraform"><span style="display:flex;"><span><span style="color:#ea9a97">linode_token</span>   <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;token_that_looks_like_random_numbers&#34;</span><span style="color:#6e6a86"> #&lt;------ API TOKEN form linode 
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#ea9a97">ssh_username</span>   <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;Example99&#34;</span><span style="color:#6e6a86">                            #&lt;------ here should be your linode username
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#ea9a97">root_password</span>  <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;perfectly_safe_password&#34;</span><span style="color:#6e6a86">              #&lt;------ password to cloud machine created using terraform
 </span></span></span></code></pre></div><ol start="3">
 <li>Create another file <code>main.tf</code> with our configuration. I will explain what does what in comments</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terraform" data-lang="terraform"><span style="display:flex;"><span><span style="color:#6e6a86"># we don&#39;t want to accidently share our secrets, that&#39;s why we hide them in separate directory
 </span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"># and mark them as &#34;sensitive&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#3e8fb0">variable</span> <span style="color:#f6c177">&#34;linode_token&#34;</span> <span style="color:#908caa">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">type</span>        = <span style="color:#ea9a97">string</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">sensitive</span>   = <span style="color:#3e8fb0">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">type</span>        <span style="color:#908caa">=</span> <span style="color:#ea9a97">string</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">sensitive</span>   <span style="color:#908caa">=</span> <span style="color:#3e8fb0">true</span>
 </span></span><span style="display:flex;"><span><span style="color:#908caa">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#3e8fb0">
-</span></span></span><span style="display:flex;"><span><span style="color:#3e8fb0">variable</span> <span style="color:#f6c177">&#34;ssh_username&#34;</span> <span style="color:#908caa">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">type</span>        = <span style="color:#ea9a97">string</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">sensitive</span>   = <span style="color:#3e8fb0">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#3e8fb0">variable</span> <span style="color:#f6c177">&#34;ssh_username&#34;</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">type</span>        <span style="color:#908caa">=</span> <span style="color:#ea9a97">string</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">sensitive</span>   <span style="color:#908caa">=</span> <span style="color:#3e8fb0">true</span>
 </span></span><span style="display:flex;"><span><span style="color:#908caa">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#3e8fb0">
-</span></span></span><span style="display:flex;"><span><span style="color:#3e8fb0">variable</span> <span style="color:#f6c177">&#34;root_password&#34;</span> <span style="color:#908caa">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">type</span>        = <span style="color:#ea9a97">string</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">sensitive</span>   = <span style="color:#3e8fb0">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#3e8fb0">variable</span> <span style="color:#f6c177">&#34;root_password&#34;</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">type</span>        <span style="color:#908caa">=</span> <span style="color:#ea9a97">string</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">sensitive</span>   <span style="color:#908caa">=</span> <span style="color:#3e8fb0">true</span>
 </span></span><span style="display:flex;"><span><span style="color:#908caa">}</span><span style="color:#6e6a86">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"># in this example we are using linode so our provider is linode
 </span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#ea9a97">terraform</span> <span style="color:#908caa">{</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">required_providers</span> <span style="color:#908caa">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">linode</span> = <span style="color:#908caa">{</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#ea9a97">source</span> = <span style="color:#f6c177">&#34;linode/linode&#34;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#ea9a97">version</span> = <span style="color:#f6c177">&#34;2.5.2&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">linode</span> <span style="color:#908caa">=</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ea9a97">source</span> <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;linode/linode&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ea9a97">version</span> <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;2.5.2&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#908caa">}</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#908caa">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#908caa">}</span><span style="color:#6e6a86">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e6a86">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"># this is where terraform need linode api token, for creating linode instance
 </span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#3e8fb0">provider</span> <span style="color:#f6c177">&#34;linode&#34;</span> <span style="color:#908caa">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ea9a97">token</span> = <span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">linode_token</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ea9a97">token</span> <span style="color:#908caa">=</span> <span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">linode_token</span>
 </span></span><span style="display:flex;"><span><span style="color:#908caa">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#3e8fb0">resource</span> <span style="color:#f6c177">&#34;linode_instance&#34;</span> <span style="color:#f6c177">&#34;web&#34;</span> <span style="color:#908caa">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">label</span>            = <span style="color:#f6c177">&#34;arch_eu-central_nanode-1cpu-1ram_tf&#34;</span><span style="color:#6e6a86">  #&lt;------ name that will display in linode dashboard
-</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">group</span>            = <span style="color:#f6c177">&#34;Terraform&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">label</span>            <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;arch_eu-central_nanode-1cpu-1ram_tf&#34;</span><span style="color:#6e6a86">  #&lt;------ name that will display in linode dashboard
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">group</span>            <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;Terraform&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">image</span>            = <span style="color:#f6c177">&#34;linode/arch&#34;</span><span style="color:#6e6a86">                          #&lt;------ operating system. arch means ArchLinux
-</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">region</span>           = <span style="color:#f6c177">&#34;eu-central&#34;</span><span style="color:#6e6a86">                           #&lt;------ server location for nanode
-</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">type</span>             = <span style="color:#f6c177">&#34;g6-nanode-1&#34;</span><span style="color:#6e6a86">                          #&lt;------ codename for cheapest nanode on linode 
-</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">authorized_users</span> = <span style="color:#908caa">[</span><span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">ssh_username</span><span style="color:#908caa">]</span><span style="color:#6e6a86">                     #&lt;------ here are our linode username extracted from secrets
-</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">root_pass</span>        = <span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">root_password</span><span style="color:#6e6a86">                      #&lt;------ here is our password extracted from secret file
-</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">private_ip</span>       = <span style="color:#3e8fb0">false</span><span style="color:#6e6a86">
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">image</span>            <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;linode/arch&#34;</span><span style="color:#6e6a86">                          #&lt;------ operating system. arch means ArchLinux
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">region</span>           <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;eu-central&#34;</span><span style="color:#6e6a86">                           #&lt;------ server location for nanode
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">type</span>             <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;g6-nanode-1&#34;</span><span style="color:#6e6a86">                          #&lt;------ codename for cheapest nanode on linode 
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">authorized_users</span> <span style="color:#908caa">=</span> <span style="color:#908caa">[</span><span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">ssh_username</span><span style="color:#908caa">]</span><span style="color:#6e6a86">                     #&lt;------ here are our linode username extracted from secrets
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">root_pass</span>        <span style="color:#908caa">=</span> <span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">root_password</span><span style="color:#6e6a86">                      #&lt;------ here is our password extracted from secret file
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">private_ip</span>       <span style="color:#908caa">=</span> <span style="color:#3e8fb0">false</span><span style="color:#6e6a86">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e6a86">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"># this is definition of connection that provisioner (down bellow) uses for executing commands
 </span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">connection</span> <span style="color:#908caa">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">type</span>        = <span style="color:#f6c177">&#34;ssh&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">user</span>        = <span style="color:#f6c177">&#34;root&#34;</span> 
-</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">password</span>    = <span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">root_password</span><span style="color:#6e6a86">                         #&lt;------ here is our password once again. In this case we use it to connect to resource
-</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>    <span style="color:#ea9a97">host</span>        = <span style="color:#ea9a97">self</span><span style="color:#908caa">.</span><span style="color:#ea9a97">ip_address</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">type</span>        <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;ssh&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">user</span>        <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;root&#34;</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">password</span>    <span style="color:#908caa">=</span> <span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">root_password</span><span style="color:#6e6a86">                         #&lt;------ here is our password once again. In this case we use it to connect to resource
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>    <span style="color:#ea9a97">host</span>        <span style="color:#908caa">=</span> <span style="color:#ea9a97">self</span><span style="color:#908caa">.</span><span style="color:#ea9a97">ip_address</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#908caa">}</span><span style="color:#6e6a86">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"># afrer creating new machine we can send some extra commands 
 </span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"># for example code bellow updates archlinux, install docker + docker compose and rebooting
-</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#3e8fb0">  provisioner</span> <span style="color:#f6c177">&#34;remote-exec&#34;</span> <span style="color:#908caa">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">inline</span> = <span style="color:#908caa">[</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">provisioner</span> <span style="color:#f6c177">&#34;remote-exec&#34;</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">inline</span> <span style="color:#908caa">=</span> <span style="color:#908caa">[</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f6c177">&#34;sudo pacman -Sy archlinux-keyring --noconfirm&#34;</span><span style="color:#908caa">,</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f6c177">&#34;sudo pacman -Syu git docker docker-compose neovim zip wget tmux --noconfirm&#34;</span><span style="color:#908caa">,</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f6c177">&#34;sudo systemctl enable docker.service&#34;</span><span style="color:#908caa">,</span>
