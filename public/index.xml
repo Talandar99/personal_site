@@ -6,8 +6,15 @@
     <description>Recent content on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 07 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creating Proxmox VM with Terraform</title>
+      <link>/posts/terraform_proxmox/</link>
+      <pubDate>Thu, 07 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>/posts/terraform_proxmox/</guid>
+      <description>&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;&#xA;&lt;p&gt;I assume you have Proxmox already installed and you know how to create VM in cloud using terraform&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;creating-vm-template&#34;&gt;Creating VM template&lt;/h2&gt;&#xA;&lt;p&gt;You need VM template for creating vm&amp;rsquo;s with terraform&lt;/p&gt;&#xA;&lt;h3 id=&#34;get-standard-installation-iso-image&#34;&gt;Get standard installation ISO image&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;for this example we will use debian netinst iso.&#xA;&lt;a href=&#34;https://www.debian.org/distrib/&#34; target=&#34;_blank&#34;&gt;link to debian page&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;you can dowload iso directly to proxmox&#xA;proxmox web ui -&amp;gt; node_name -&amp;gt; Local -&amp;gt; &amp;ldquo;Download from url&amp;rdquo;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;create-standard-vm&#34;&gt;Create standard VM&lt;/h3&gt;&#xA;&lt;p&gt;go to proxmox web interface&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Introduction to terraforming clouds</title>
       <link>/posts/introduction_to_terraforming_clouds/</link>

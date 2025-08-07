@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="en-us" lang="en-us" >
+
+<head>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.7750550c0319f5de56d916b91e642bf72a5bd09ee50b201dc2ed9db69d6177a8.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/favicon.png>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Talandar - Creating Proxmox VM with Terraform</title>
+<meta property="og:title" content=Talandar&#32;-&#32;Creating&#32;Proxmox&#32;VM&#32;with&#32;Terraform />
+<meta name="twitter:title" content=Talandar&#32;-&#32;Creating&#32;Proxmox&#32;VM&#32;with&#32;Terraform />
+<meta itemprop="name" content=Talandar&#32;-&#32;Creating&#32;Proxmox&#32;VM&#32;with&#32;Terraform />
+<meta name="application-name" content=Talandar&#32;-&#32;Creating&#32;Proxmox&#32;VM&#32;with&#32;Terraform />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="" />
+<meta itemprop="description" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:description" content="" />
+
+
+<base href="/posts/terraform_proxmox/" />
+<link rel="canonical" href="/posts/terraform_proxmox/" itemprop="url" />
+<meta name="url" content="/posts/terraform_proxmox/" />
+<meta name="twitter:url" content="/posts/terraform_proxmox/" />
+<meta property="og:url" content="/posts/terraform_proxmox/" />
+
+
+<meta property="og:updated_time" content=" 2025-08-07T00:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.147.7">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.e0316752119717c6838a85b9883e7e5f62c795178b0a97aa5e856dbd536d587e.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #202020;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #202020;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+        
+            <a href="/">
+                <h1>Talandar</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    I will add description someday
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+            
+            
+                
+                
+            
+                
+                
+            
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                        <li class="sub-heading">
+                            Recent
+                        </li>
+                        
+                            <li class="bullet">
+                                <a href="/posts/terraform_proxmox/">Creating Proxmox VM with Terraform</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="/posts/introduction_to_terraforming_clouds/">Introduction to terraforming clouds</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="/posts/venv_jupyter/">Using Jupyer notebook as python application</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="/posts/how_to_setup_jupyter_notebook_with_docker_compose/">Jupyter &#43; Spark as Docker Compose</a>
+                            </li>
+                        
+                    
+                
+            
+            
+                
+                
+            
+                
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="RSS Feed" href="/posts/index.xml">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 1280.000000 1280.000000">
+            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="currentColor">
+                <path d="M2295 11929 c-284 -12 -642 -45 -707 -65 -17 -5 -18 -63 -18 -1039 0 -569 4 -1036 8 -1039 5 -3 74 6 153 19 510 86 1168 95 1789 25 1348 -153 2602 -677 3670 -1531 385 -308 820 -744 1126 -1129 842 -1060 1362 -2313 1514 -3650 70 -621 61 -1279 -25 -1789 -13 -79 -22 -148 -19 -153 3 -4 471 -8 1039 -8 l1035 0 5 23 c51 225 85 942 67 1419 -23 605 -77 1044 -198 1617 -294 1400 -927 2734 -1823 3846 -1043 1295 -2364 2259 -3909 2854 -1158 447 -2451 656 -3707 600z"/>
+                <path d="M2255 7845 c-269 -25 -620 -81 -667 -106 -17 -9 -18 -55 -18 -899 0 -706 3 -890 13 -890 6 0 66 18 132 41 130 44 288 79 467 105 154 21 577 30 749 15 1207 -107 2267 -823 2814 -1902 166 -327 268 -637 330 -1001 38 -227 48 -384 42 -662 -8 -348 -44 -590 -126 -831 -23 -66 -41 -126 -41 -132 0 -10 184 -13 890 -13 844 0 890 1 899 18 27 50 88 452 110 725 14 162 14 624 1 782 -59 703 -233 1323 -545 1945 -481 956 -1313 1788 -2270 2268 -620 310 -1239 483 -1940 542 -165 14 -669 10 -840 -5z"/>
+                <path d="M2519 3815 c-391 -66 -725 -336 -868 -703 -79 -201 -96 -462 -45 -677 83 -344 338 -641 666 -774 116 -47 205 -69 330 -80 412 -39 811 153 1040 500 193 292 240 648 128 981 -135 403 -492 699 -914 757 -100 14 -241 12 -337 -4z"/>
+            </g>
+        </svg>
+    </a>
+
+
+
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2025 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="/posts/terraform_proxmox/">Creating Proxmox VM with Terraform</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <time datetime=" 2025-08-07T00:00:00Z" class="post-date">
+        August 7, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>4 mins read</span>
+      </span>
+    </div>
+
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h2 id="prerequisites">Prerequisites</h2>
+<p>I assume you have Proxmox already installed and you know how to create VM in cloud using terraform</p>
+<hr>
+<h2 id="creating-vm-template">Creating VM template</h2>
+<p>You need VM template for creating vm&rsquo;s with terraform</p>
+<h3 id="get-standard-installation-iso-image">Get standard installation ISO image</h3>
+<ul>
+<li>for this example we will use debian netinst iso.
+<a href="https://www.debian.org/distrib/" target="_blank">link to debian page</a></li>
+<li>you can dowload iso directly to proxmox
+proxmox web ui -&gt; node_name -&gt; Local -&gt; &ldquo;Download from url&rdquo;</li>
+</ul>
+<hr>
+<h3 id="create-standard-vm">Create standard VM</h3>
+<p>go to proxmox web interface</p>
+<ol>
+<li>
+<p>Create VM button</p>
+</li>
+<li>
+<p>General</p>
+</li>
+</ol>
+<ul>
+<li>Node: your node name</li>
+<li>Name: does not matter</li>
+<li>VM ID: does not matter</li>
+</ul>
+<ol start="3">
+<li>OS</li>
+</ol>
+<ul>
+<li>Storage: local</li>
+<li>ISO: iso with installation of your system</li>
+<li>Type: Linux</li>
+<li>Kernel: leave default</li>
+</ul>
+<ol start="4">
+<li>System</li>
+</ol>
+<ul>
+<li>Qemu Agent = true</li>
+<li>Leave rest</li>
+</ul>
+<ol start="5">
+<li>Disks</li>
+</ol>
+<ul>
+<li>does not matter but give at least 10GB</li>
+</ul>
+<ol start="6">
+<li>CPU</li>
+</ol>
+<ul>
+<li>does not matter</li>
+</ul>
+<ol start="7">
+<li>Memory</li>
+</ol>
+<ul>
+<li>does not matter</li>
+</ul>
+<ol start="8">
+<li>Web</li>
+</ol>
+<ul>
+<li>Bridge: vmbr0</li>
+<li>Model: VirtiO</li>
+</ul>
+<ol start="9">
+<li>Confirm</li>
+</ol>
+<ul>
+<li>Start After Created</li>
+</ul>
+<hr>
+<h3 id="system-installation">System Installation</h3>
+<ul>
+<li>Install System. You don&rsquo;t need gui, but ssh server will be usefull.</li>
+<li>When picking password pick something simple like <code>root</code>, we will change it later when provisionning with terraform</li>
+</ul>
+<h4 id="install-cloud-init-package">Install cloud init package</h4>
+<p>Cloud-init enables automated setup of things like users, SSH keys, packages, and scripts when a VM starts for the first time.
+In our case cloud init will be used by Terraform.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    apt update
+</span></span><span style="display:flex;"><span>    apt install cloud-init qemu-guest-agent -y
+</span></span><span style="display:flex;"><span>    systemctl <span style="color:#ea9a97">enable</span> qemu-guest-agent
+</span></span></code></pre></div><ul>
+<li>remember about installing ssh server</li>
+<li>other stuff does not matter too much, just make sure everything you wanted is installed</li>
+</ul>
+<h4 id="execute-this-if-you-want-to-log-in-as-a-root-via-ssh">Execute this if you want to log in as a root via ssh</h4>
+<p>(technicly you can do everything without it but it&rsquo;s easier this way)</p>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ea9a97">echo</span> <span style="color:#f6c177">&#39;PermitRootLogin yes&#39;</span> &gt;&gt; /etc/ssh/sshd_config 
+</span></span><span style="display:flex;"><span><span style="color:#ea9a97">echo</span> <span style="color:#f6c177">&#39;PasswordAuthentication yes&#39;</span> &gt;&gt; /etc/ssh/sshd_config 
+</span></span></code></pre></div><h4 id="clear-image">Clear image</h4>
+<p>(optional but recomended)</p>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>   cloud-init clean
+</span></span><span style="display:flex;"><span>   truncate -s <span style="color:#f6c177">0</span> /etc/machine-id
+</span></span></code></pre></div><hr>
+<h3 id="prepare-template">Prepare template</h3>
+<ol>
+<li>shutdown vm</li>
+<li>Hardware -&gt; Add -&gt; CloudInit Drive</li>
+</ol>
+<ul>
+<li>Storage: local-lvm</li>
+</ul>
+<ol start="3">
+<li>Options</li>
+</ol>
+<ul>
+<li>make sure scsi0 is first in boot order</li>
+<li>Qemu Guest Agent = Enabled</li>
+</ul>
+<h4 id="turn-into-template">Turn into template</h4>
+<p>More -&gt; Convert to template</p>
+<hr>
+<h2 id="using-terraform-to-setup-vm-or-multiple-vms">Using terraform to setup VM or multiple VM&rsquo;s</h2>
+<p>for this example we will create 2 VM&rsquo;s with static ip address.
+Copy configurations bellow and update things specified by comments</p>
+<h3 id="secrets-file">secrets file</h3>
+<p>create secrets.auto.tfvars file</p>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terraform" data-lang="terraform"><span style="display:flex;"><span><span style="color:#ea9a97">pm_address</span>                  <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;&#34;</span><span style="color:#6e6a86">    # your proxmox ip address
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#ea9a97">ssh_password</span>                <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;&#34;</span><span style="color:#6e6a86">    # new ssh password for vms
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#ea9a97">pm_password</span>                 <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;&#34;</span><span style="color:#6e6a86">    # password for your proxmox
+</span></span></span></code></pre></div><h3 id="main-configuration">main configuration</h3>
+<p>create main.tf file</p>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terraform" data-lang="terraform"><span style="display:flex;"><span><span style="color:#6e6a86"># variables
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#3e8fb0">variable</span> <span style="color:#f6c177">&#34;instances&#34;</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">description</span> <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;list of vms to create&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">type</span> <span style="color:#908caa">=</span><span style="color:#ea9a97"> map</span><span style="color:#908caa">(</span><span style="color:#ea9a97">object</span><span style="color:#908caa">({</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">ip</span>   <span style="color:#908caa">=</span> <span style="color:#ea9a97">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">vmid</span> <span style="color:#908caa">=</span> <span style="color:#ea9a97">number</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#908caa">}))</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">default</span> <span style="color:#908caa">=</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f6c177">&#34;vm1&#34;</span> <span style="color:#908caa">=</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ea9a97">ip</span>   <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;192.168.1.81/24&#34;</span><span style="color:#6e6a86"> # ip address will be static but it have to be unique
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>      <span style="color:#ea9a97">vmid</span> <span style="color:#908caa">=</span> <span style="color:#f6c177">181</span><span style="color:#6e6a86">               # vmid should also be unique to avoid nuke&#39;ing another VM in proxmox by accident
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>    <span style="color:#908caa">},</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f6c177">&#34;vm2&#34;</span> <span style="color:#908caa">=</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ea9a97">ip</span>   <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;192.168.1.82/24&#34;</span><span style="color:#6e6a86"> # ip address will be static but it have to be unique
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>      <span style="color:#ea9a97">vmid</span> <span style="color:#908caa">=</span> <span style="color:#f6c177">182</span><span style="color:#6e6a86">               # vmid should also be unique to avoid nuke&#39;ing another VM in proxmox by accident
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>    <span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#3e8fb0">variable</span> <span style="color:#f6c177">&#34;ssh_username&#34;</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">type</span>    <span style="color:#908caa">=</span> <span style="color:#ea9a97">string</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">default</span> <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;root&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#3e8fb0">variable</span> <span style="color:#f6c177">&#34;ssh_password&#34;</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">type</span>      <span style="color:#908caa">=</span> <span style="color:#ea9a97">string</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">sensitive</span> <span style="color:#908caa">=</span> <span style="color:#3e8fb0">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#3e8fb0">variable</span> <span style="color:#f6c177">&#34;pm_password&#34;</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">type</span>      <span style="color:#908caa">=</span> <span style="color:#ea9a97">string</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">sensitive</span> <span style="color:#908caa">=</span> <span style="color:#3e8fb0">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#3e8fb0">variable</span> <span style="color:#f6c177">&#34;pm_address&#34;</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">type</span>      <span style="color:#908caa">=</span> <span style="color:#ea9a97">string</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">sensitive</span> <span style="color:#908caa">=</span> <span style="color:#3e8fb0">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#908caa">}</span><span style="color:#6e6a86">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"># providers
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#ea9a97">terraform</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">required_providers</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">proxmox</span> <span style="color:#908caa">=</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ea9a97">source</span>  <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;Telmate/proxmox&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ea9a97">version</span> <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;3.0.2-rc01&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#3e8fb0">provider</span> <span style="color:#f6c177">&#34;proxmox&#34;</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">pm_api_url</span>      <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;https://</span><span style="color:#f6c177">${</span><span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">pm_address</span><span style="color:#f6c177">}</span><span style="color:#f6c177">:8006/api2/json&#34;</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">pm_user</span>         <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;root@pam&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">pm_password</span>     <span style="color:#908caa">=</span> <span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">pm_password</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">pm_tls_insecure</span> <span style="color:#908caa">=</span> <span style="color:#3e8fb0">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#908caa">}</span><span style="color:#6e6a86">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"># resource
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span><span style="color:#3e8fb0">resource</span> <span style="color:#f6c177">&#34;proxmox_vm_qemu&#34;</span> <span style="color:#f6c177">&#34;vms&#34;</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">for_each</span> <span style="color:#908caa">=</span> <span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">instances</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">name</span>        <span style="color:#908caa">=</span> <span style="color:#ea9a97">each</span><span style="color:#908caa">.</span><span style="color:#ea9a97">key</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">target_node</span> <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;proxmox&#34;</span><span style="color:#6e6a86">               # this is name of proxmox node, yours can be different
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">vmid</span>        <span style="color:#908caa">=</span> <span style="color:#ea9a97">each</span><span style="color:#908caa">.</span><span style="color:#ea9a97">value</span><span style="color:#908caa">.</span><span style="color:#ea9a97">vmid</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">clone</span>       <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;debian-12-template&#34;</span><span style="color:#6e6a86">    # this is your template name, yours can be different
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">cpu</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">cores</span> <span style="color:#908caa">=</span> <span style="color:#f6c177">2</span><span style="color:#6e6a86">                           # here you can specify ammount of cores used by VM
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">memory</span>    <span style="color:#908caa">=</span> <span style="color:#f6c177">2048</span><span style="color:#6e6a86">                      # here you can specify RAM
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">agent</span>     <span style="color:#908caa">=</span> <span style="color:#f6c177">1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">skip_ipv6</span> <span style="color:#908caa">=</span> <span style="color:#3e8fb0">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">os_type</span>    <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;cloud-init&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">ciuser</span>     <span style="color:#908caa">=</span> <span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">ssh_username</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">cipassword</span> <span style="color:#908caa">=</span> <span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">ssh_password</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">ipconfig0</span> <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;ip=</span><span style="color:#f6c177">${</span><span style="color:#ea9a97">each</span><span style="color:#908caa">.</span><span style="color:#ea9a97">value</span><span style="color:#908caa">.</span><span style="color:#ea9a97">ip</span><span style="color:#f6c177">}</span><span style="color:#f6c177">,gw=192.168.1.1&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">disk</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">type</span>    <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;disk&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">size</span>    <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;10G&#34;</span><span style="color:#6e6a86">                     # here you can specify disk size
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>    <span style="color:#ea9a97">storage</span> <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;local-lvm&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">slot</span>    <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;scsi0&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">disk</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">type</span>    <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;cloudinit&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">storage</span> <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;local-lvm&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">slot</span>    <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;ide2&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ea9a97">network</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">id</span>     <span style="color:#908caa">=</span> <span style="color:#f6c177">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">model</span>  <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;virtio&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">bridge</span> <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;vmbr0&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#908caa">}</span><span style="color:#6e6a86">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86">  # provisionner can be used to run additional commands when setting up vm for first time
+</span></span></span><span style="display:flex;"><span><span style="color:#6e6a86"></span>  <span style="color:#ea9a97">provisioner</span> <span style="color:#f6c177">&#34;remote-exec&#34;</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">inline</span> <span style="color:#908caa">=</span> <span style="color:#908caa">[</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f6c177">&#34;apt update -y&#34;</span><span style="color:#908caa">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f6c177">&#34;apt upgrade -y&#34;</span><span style="color:#908caa">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f6c177">&#34;apt install iptables git tar zip unzip curl -y&#34;</span><span style="color:#908caa">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#908caa">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ea9a97">connection</span> <span style="color:#908caa">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ea9a97">type</span>     <span style="color:#908caa">=</span> <span style="color:#f6c177">&#34;ssh&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ea9a97">user</span>     <span style="color:#908caa">=</span> <span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">ssh_username</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ea9a97">password</span> <span style="color:#908caa">=</span> <span style="color:#ea9a97">var</span><span style="color:#908caa">.</span><span style="color:#ea9a97">ssh_password</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ea9a97">host</span>     <span style="color:#908caa">=</span> <span style="color:#ea9a97">split</span><span style="color:#908caa">(</span><span style="color:#f6c177">&#34;/&#34;</span><span style="color:#908caa">,</span> <span style="color:#ea9a97">each</span><span style="color:#908caa">.</span><span style="color:#ea9a97">value</span><span style="color:#908caa">.</span><span style="color:#ea9a97">ip</span><span style="color:#908caa">)[</span><span style="color:#f6c177">0</span><span style="color:#908caa">]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#908caa">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#908caa">}</span>
+</span></span></code></pre></div><h3 id="using-opentofuterraform-to-run">Using OpenTofu/terraform to run</h3>
+<p>i recomend adding alias to .bashrc</p>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ea9a97">alias</span> <span style="color:#ea9a97">tf</span><span style="color:#908caa">=</span>tofu
+</span></span><span style="display:flex;"><span><span style="color:#6e6a86">#or for terraform</span>
+</span></span><span style="display:flex;"><span><span style="color:#ea9a97">alias</span> <span style="color:#ea9a97">tf</span><span style="color:#908caa">=</span>terraform
+</span></span></code></pre></div><p>basic commands</p>
+<div class="highlight"><pre tabindex="0" style="color:#e0def4;background-color:#232136;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6e6a86"># init terraform in new place</span>
+</span></span><span style="display:flex;"><span>tf init    
+</span></span><span style="display:flex;"><span><span style="color:#6e6a86"># apply configuration</span>
+</span></span><span style="display:flex;"><span>tf apply
+</span></span><span style="display:flex;"><span><span style="color:#6e6a86"># destroy configuration</span>
+</span></span><span style="display:flex;"><span>tf destroy
+</span></span></code></pre></div>
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="/posts/introduction_to_terraforming_clouds/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Introduction to terraforming clouds</a>
+        
+	    
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#creating-vm-template">Creating VM template</a>
+      <ul>
+        <li><a href="#get-standard-installation-iso-image">Get standard installation ISO image</a></li>
+        <li><a href="#create-standard-vm">Create standard VM</a></li>
+        <li><a href="#system-installation">System Installation</a></li>
+        <li><a href="#prepare-template">Prepare template</a></li>
+      </ul>
+    </li>
+    <li><a href="#using-terraform-to-setup-vm-or-multiple-vms">Using terraform to setup VM or multiple VM&rsquo;s</a>
+      <ul>
+        <li><a href="#secrets-file">secrets file</a></li>
+        <li><a href="#main-configuration">main configuration</a></li>
+        <li><a href="#using-opentofuterraform-to-run">Using OpenTofu/terraform to run</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

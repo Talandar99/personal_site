@@ -75,7 +75,7 @@
 <meta property="og:url" content="/" />
 
 
-<meta property="og:updated_time" content=" 2025-06-20T00:00:00Z" />
+<meta property="og:updated_time" content=" 2025-08-07T00:00:00Z" />
 
 
 <link rel="sitemap" type="application/xml" title="Sitemap" href='/sitemap.xml' />
@@ -218,6 +218,10 @@
                         </li>
                         
                             <li class="bullet">
+                                <a href="/posts/terraform_proxmox/">Creating Proxmox VM with Terraform</a>
+                            </li>
+                        
+                            <li class="bullet">
                                 <a href="/posts/introduction_to_terraforming_clouds/">Introduction to terraforming clouds</a>
                             </li>
                         
@@ -288,6 +292,62 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
                 <div class="posts">
     
     
+    <article class="post">
+        <div class="info">
+  <h1 class="post-title">
+    <a href="/posts/terraform_proxmox/">Creating Proxmox VM with Terraform</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <time datetime=" 2025-08-07T00:00:00Z" class="post-date">
+        August 7, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>4 mins read</span>
+      </span>
+    </div>
+
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+        
+        <h2 id="prerequisites">Prerequisites</h2>
+<p>I assume you have Proxmox already installed and you know how to create VM in cloud using terraform</p>
+<hr>
+<h2 id="creating-vm-template">Creating VM template</h2>
+<p>You need VM template for creating vm&rsquo;s with terraform</p>
+<h3 id="get-standard-installation-iso-image">Get standard installation ISO image</h3>
+<ul>
+<li>for this example we will use debian netinst iso.
+<a href="https://www.debian.org/distrib/" target="_blank">link to debian page</a></li>
+<li>you can dowload iso directly to proxmox
+proxmox web ui -&gt; node_name -&gt; Local -&gt; &ldquo;Download from url&rdquo;</li>
+</ul>
+<hr>
+<h3 id="create-standard-vm">Create standard VM</h3>
+<p>go to proxmox web interface</p>
+        
+        <div class="read-more-link">
+            <a href="/posts/terraform_proxmox/">Read More…</a>
+        </div>
+        
+        
+    </article>
     <article class="post">
         <div class="info">
   <h1 class="post-title">
