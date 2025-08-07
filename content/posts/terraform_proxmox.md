@@ -53,7 +53,7 @@ go to proxmox web interface
 ---
 ### System Installation
 - Install System. You don't need gui, but ssh server will be usefull.
-- When picking password pick something simple like `root`, we will change it later when provisionning with terraform
+- When picking password pick something simple , we will change it later when provisionning with terraform
 #### Install cloud init package
 Cloud-init enables automated setup of things like users, SSH keys, packages, and scripts when a VM starts for the first time.
 In our case cloud init will be used by Terraform.
